@@ -12,7 +12,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:cardCornerRadius="20dp"
+        app:cardCornerRadius="14dp"
         app:cardElevation="8dp"
         android:foreground="?attr/selectableItemBackground"
         android:layout_margin="6dp">
@@ -81,7 +81,7 @@
                 android:layout_marginRight="8dp"
                 android:text="@string/_1_5kg"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/decBtn"
+                app:layout_constraintRight_toLeftOf="@id/editBtn"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginEnd="8dp" />
 
@@ -100,7 +100,7 @@
                 android:layout_marginEnd="24dp" />
 
             <ImageButton
-                android:id="@+id/decBtn"
+                android:id="@+id/editBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="24dp"
@@ -118,7 +118,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="gone"
-                app:constraint_referenced_ids="decBtn,qty" />
+                app:constraint_referenced_ids="editBtn,qty" />
 
             <androidx.constraintlayout.widget.Barrier
                 android:id="@+id/barrier"
