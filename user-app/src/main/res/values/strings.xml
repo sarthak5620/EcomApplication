@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MyEcomApplication</string>
+    <string name="checkout">CHECKOUT</string>
+    <string name="total_rupees">₹932</string>
+    <string name="total_items">6 items</string>
+    <string name="apple">Apple</string>
+    <string name="rs_100_kg">₹ 100/Kg</string>
+    <string name="_1_5kg">1.5Kg</string>
+    <string name="kiwi">Kiwi</string>
+    <string name="variant_name">₹96 - 500g</string>
+    <string name="number_of_variants">2 variants</string>
+    <string name="variant_items">3</string>
+</resources>

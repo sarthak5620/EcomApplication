@@ -1,0 +1,2 @@
+include ':user-app'
+rootProject.name = "MyEcomApplication"
