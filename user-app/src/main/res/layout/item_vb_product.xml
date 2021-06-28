@@ -69,7 +69,8 @@
                 android:layout_marginLeft="16dp"
                 android:text="@string/number_of_variants"
                 app:layout_constraintBottom_toBottomOf="@+id/dropBtn"
-                app:layout_constraintLeft_toRightOf="@id/imageView" />
+                app:layout_constraintLeft_toRightOf="@id/imageView"
+                android:layout_marginStart="16dp" />
 
             <ImageButton
                 android:id="@+id/dropBtn"
