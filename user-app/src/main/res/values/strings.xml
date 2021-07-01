@@ -10,4 +10,10 @@
     <string name="variant_name">₹96 - 500g</string>
     <string name="number_of_variants">2 variants</string>
     <string name="variant_items">3</string>
+    <string name="name_of_product">Orange</string>
+    <string name="remove">REMOVE</string>
+    <string name="save">SAVE</string>
+    <string name="name_of_products">Kiwi</string>
+    <string name="_3">3</string>
+    <string name="remove_all">REMOVE ALL</string>
 </resources>
