@@ -4,11 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.android.myecomapplication.databinding.ActivityMainBinding;
 
+public class MainActivity extends AppCompatActivity {
+   ActivityMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(binding.getRoot());
     }
+
+
+
 }

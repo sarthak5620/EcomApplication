@@ -57,7 +57,7 @@ public class Cart {
     }
 
     //Method to remove Weight Based Products
-   private void removeWBP(Product product) {
+    public void removeWBP(Product product) {
      //   total -= cartItems.get(product.name).cost();
       //  noOfItems--;
         cartItems.remove(product.name);

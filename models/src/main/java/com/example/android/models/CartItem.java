@@ -2,7 +2,7 @@ package com.example.android.models;
 
 public class CartItem {
     String name;
-    float unitPrice, quantity;
+    public float unitPrice, quantity;
 
     //Details of items in cart
     public CartItem(String name, float unitPrice, float quantity) {
