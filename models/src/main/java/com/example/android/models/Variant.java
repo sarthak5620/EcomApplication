@@ -1,8 +1,8 @@
 package com.example.android.models;
 
 public class Variant {
-     public String name;
-        float price;
+     public static String name;
+        public float price;
 
         public Variant(String name, float price) {
             this.name = name;

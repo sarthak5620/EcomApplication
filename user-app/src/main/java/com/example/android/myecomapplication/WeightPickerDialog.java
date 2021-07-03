@@ -23,12 +23,7 @@ public class WeightPickerDialog {
     private DialogWeightPickerBinding binding;
     private AdapterCallbacksListener listener;
 
-    public WeightPickerDialog(Context context, Cart cart,int position,Product product, AdapterCallbacksListener listener){
-        this.context = context;
-        this.cart = cart;
-        this.product = product;
-        this.position = position;
-    }
+
 
 
     public void show() {

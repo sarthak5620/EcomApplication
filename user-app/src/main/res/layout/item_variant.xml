@@ -61,7 +61,7 @@
         tools:ignore="VectorDrawableCompat" />
 
     <androidx.constraintlayout.widget.Group
-        android:id="@+id/group"
+        android:id="@+id/initialQuantityRoot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="visible"
