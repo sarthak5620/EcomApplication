@@ -24,12 +24,21 @@ public class VariantsQtyPickerDialog {
     private Cart cart;
     private AlertDialog dialog;
     private Product product;
-    private int selectedPosition=0;
+    private final int selectedPosition;
     private LayoutInflater inflater;
     private AdapterCallbacksListener listener ;
     private HashMap<String, Integer> saveQuantity = new HashMap<>();
     private DialogVariantsQtyPickerBinding binding;
     private ItemVariantBinding b;
+
+
+    public VariantsQtyPickerDialog(Context context, Cart cart, int position, Product product, AdapterCallbacksListener listener) {
+        this.cart = cart;
+        this.selectedPosition = position ;
+        this.product = product;
+        this.listener = listener;
+        this.context = context;
+    }
 
     public void show() {
         binding= DialogVariantsQtyPickerBinding.inflate(((MainActivity)context).getLayoutInflater());
@@ -99,7 +108,7 @@ public class VariantsQtyPickerDialog {
                     if(!saveQuantity.isEmpty()){
                         for (Variant variant : product.variants){
                             if(saveQuantity.containsKey(Variant.name)){
-                                cart.add(product,variant);
+                                cart.add(product,variant, Integer.parseInt(b.qty.getText().toString()));
                             }
                         }
                         listener.onCartUpdated(selectedPosition);

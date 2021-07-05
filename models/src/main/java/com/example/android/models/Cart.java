@@ -1,11 +1,13 @@
 package com.example.android.models;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 public class Cart {
    public HashMap<String, CartItem> cartItems = new HashMap<>();
     float total;
     int noOfItems;
+    private int quantity;
 
     //Method to add Weight Based Products
     public void add(Product product, float quantity) {
@@ -13,12 +15,12 @@ public class Cart {
         //If selected item is already present in the cart
         if(cartItems.containsKey(product.name)) {
             total -= cartItems.get(product.name).cost();
-            cartItems.get(product.name).quantity = quantity;
+            cartItems.get(product.name).quantity = (int) quantity;
         }
 
         //Else if adding it for the first time
         else {
-            CartItem item = new CartItem(product.name, product.pricePerKg, quantity);
+            CartItem item = new CartItem(product.name, product.pricePerKg, (int) quantity);
             cartItems.put(product.name, item);
             noOfItems++;
         }
@@ -28,13 +30,14 @@ public class Cart {
     }
 
     //Method to add Variant Based Products
-    public void add(Product product, Variant variant) {
+    public void add(Product product, Variant variant, int quantity) {
+        this.quantity = quantity;
 
         String key = product.name + " " + variant.name;
 
         //If selected item is already present in the cart
         if(cartItems.containsKey(key)) {
-            cartItems.get(key).quantity++;
+            Objects.requireNonNull(cartItems.get(key)).quantity++;
         }
 
         //Else if adding for the first time

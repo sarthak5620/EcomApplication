@@ -84,6 +84,7 @@
                 app:tint="@color/design_default_color_primary"
                 tools:ignore="VectorDrawableCompat" />
 
+
             <TextView
                 android:id="@+id/qty"
                 style="@style/TextAppearance.AppCompat.Body1"
@@ -111,7 +112,7 @@
                 tools:ignore="VectorDrawableCompat" />
 
             <ImageButton
-                android:id="@+id/editBtn"
+                android:id="@+id/decButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="2dp"
@@ -129,7 +130,7 @@
                 android:id="@+id/non_zero_quantity_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:constraint_referenced_ids="editBtn,qty" />
+                app:constraint_referenced_ids="decButton,qty" />
 
 
             <com.google.android.material.chip.ChipGroup
@@ -144,9 +145,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imageView">
 
-                <include layout="@layout/chip_variant" />
 
-                <include layout="@layout/chip_variant" />
             </com.google.android.material.chip.ChipGroup>
 
             <androidx.constraintlayout.widget.Group
@@ -154,7 +153,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="gone"
-                app:constraint_referenced_ids="editBtn,qty" />
+                app:constraint_referenced_ids="decButton,qty" />
 
 
             <androidx.constraintlayout.widget.Barrier
@@ -162,7 +161,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 app:barrierDirection="left"
-                app:constraint_referenced_ids="editBtn,incBtn"
+                app:constraint_referenced_ids="decButton,incBtn"
                 tools:layout_editor_absoluteX="387dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
