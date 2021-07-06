@@ -25,7 +25,7 @@ public class CartConsole {
                 i++;
             }
             i = sc.nextInt();
-            cart.add(products.get(productName),products.get(productName).variants.get(i));
+            cart.add(products.get(productName),products.get(productName).minimumQuantity);
             System.out.println("Your product have been successfully added");
         }
     }
@@ -57,7 +57,7 @@ public class CartConsole {
                 i++;
             }
             i = sc.nextInt();
-            cart2.add(products.get(productName),products.get(productName).variants.get(i));
+            cart2.add(products.get(productName),products.get(productName).minimumQuantity);
         }
     }
 }

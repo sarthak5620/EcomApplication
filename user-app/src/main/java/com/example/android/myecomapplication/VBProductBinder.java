@@ -24,7 +24,7 @@ public class VBProductBinder {
 
     public void Bind(Product product, ItemVbProductBinding binding, int position){
         binding.productName.setText(product.name);
-        binding.imageView.setImageResource(Integer.parseInt(product.imageUrl));
+        binding.imageView.setImageResource(Integer.parseInt(String.valueOf(product.imageUrl)));
         binding.numberOfVariants.setText(String.valueOf(product.variants.size() + " variants"));
         binding.dropBtn.setVisibility(View.VISIBLE);
         binding.dropBtn.setRotation(0);
@@ -128,10 +128,6 @@ public class VBProductBinder {
     }
 
     private void showDialog(Product product, int position) {
-        new VariantsQtyPickerDialog(context,cart,position,product, (VariantsQtyPickerDialog.AdapterCallbacksListener) listener).show();
-    }
-
-    public interface AdapterCallbacksListener {
-        void onCartUpdated(int position);
+        new VariantsQtyPickerDialog(context,cart,position,product, (AdapterCallbacksListener) listener).show();
     }
 }

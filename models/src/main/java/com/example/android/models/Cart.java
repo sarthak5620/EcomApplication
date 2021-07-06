@@ -5,8 +5,8 @@ import java.util.Objects;
 
 public class Cart {
    public HashMap<String, CartItem> cartItems = new HashMap<>();
-    float total;
-    int noOfItems;
+    public float total;
+    public int noOfItems;
     private int quantity;
 
     //Method to add Weight Based Products

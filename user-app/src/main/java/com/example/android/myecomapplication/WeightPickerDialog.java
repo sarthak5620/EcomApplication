@@ -23,7 +23,7 @@ public class WeightPickerDialog {
     private DialogWeightPickerBinding binding;
     private AdapterCallbacksListener listener;
 
-    public WeightPickerDialog(Context context, Cart cart, int position, Product product, WBProductBinder.AdapterCallbacksListener listener) {
+    public WeightPickerDialog(Context context, Cart cart, int position, Product product, AdapterCallbacksListener listener) {
         this.context = context;
         this.cart = cart;
         this.position = position;
@@ -171,11 +171,6 @@ public class WeightPickerDialog {
             }
             binding.gPicker.setValue((gram- minValueInG)/50);
         }
-    }
-
-
-    public interface AdapterCallbacksListener {
-        void onCartUpdated(int position);
     }
 
 }

@@ -4,7 +4,8 @@ import java.util.List;
 //import java.util.Objects;
 
 public class Product {
-    public String name, imageUrl;
+    public String name;
+    public int imageUrl;
     public int type;
 
     //Properties of Weight Based Products
@@ -13,7 +14,7 @@ public class Product {
     //List of Variant Based Products
     public List<Variant> variants;
 
-    public Product(String name, String imageUrl, float pricePerKg, float minimumQuantity) {
+    public Product(String name, int imageUrl, float pricePerKg, float minimumQuantity) {
         type = ProductType.TYPE_WBP;
         this.name = name;
         this.imageUrl = imageUrl;
@@ -21,7 +22,7 @@ public class Product {
         this.minimumQuantity = minimumQuantity;
     }
 
-    public Product(String name, String imageUrl, List<Variant> variants) {
+    public Product(String name, int imageUrl, List<Variant> variants) {
         type = ProductType.TYPE_VBP;
         this.name = name;
         this.imageUrl = imageUrl;

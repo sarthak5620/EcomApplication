@@ -26,7 +26,7 @@ public class AddProduct {
 
         System.out.print("Enter price per kg: ");
         float pricePerKg = sc.nextFloat();
-        Product WProduct = new Product(key, imageURL, minQty, pricePerKg);
+        Product WProduct = new Product(key, Integer.parseInt(imageURL), minQty, pricePerKg);
         products.put(key, WProduct);
         System.out.println("Product added successfully!");
     }
@@ -50,7 +50,7 @@ public class AddProduct {
             Variant variants = new Variant(amount, price);
             var.add(variants);
         }
-        Product product2 = new Product(key, imageURL, var);
+        Product product2 = new Product(key,Integer.parseInt( imageURL), var);
         products.put(key, product2);
 
         System.out.println("Your product is successfully added ");
@@ -77,7 +77,7 @@ public class AddProduct {
             float minQty = sc.nextFloat();
             System.out.println("Enter price per kg");
             float pricerPerKg = sc.nextFloat();
-            Product product = new Product(productName, imageURL, minQty, pricerPerKg);
+            Product product = new Product(productName,Integer.parseInt( imageURL), minQty, pricerPerKg);
             products.put(key2, product);
             System.out.println("Successfully edited");
             //If product is variant based
@@ -97,7 +97,7 @@ public class AddProduct {
                 Variant variants = new Variant(amount, price);
                 var.add(variants);
             }
-            Product product = new Product(productName, imageURL, var);
+            Product product = new Product(productName, Integer.parseInt(imageURL), var);
             products.put(key2, product);
             System.out.println("Successfully edited");
         } else {

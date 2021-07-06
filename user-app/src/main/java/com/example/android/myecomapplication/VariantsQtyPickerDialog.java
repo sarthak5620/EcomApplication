@@ -130,8 +130,6 @@ public class VariantsQtyPickerDialog {
         }
     }
 
-    public interface AdapterCallbacksListener {
-        void onCartUpdated(int position);
-    }
+
 
 }
