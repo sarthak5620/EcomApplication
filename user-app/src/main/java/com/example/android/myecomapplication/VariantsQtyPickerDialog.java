@@ -68,27 +68,27 @@ public class VariantsQtyPickerDialog {
 
     private void buttonEventHandlers() {
             b.decBtn.setOnClickListener(v -> {
-                if (saveQuantity.containsKey(Variant.name)) {
-                    saveQuantity.put(Variant.name, saveQuantity.get(Variant.name) - 1);
+                if (saveQuantity.containsKey(product.name)) {
+                    saveQuantity.put(product.name, saveQuantity.get(product.name) - 1);
                 }
                 //check variant quantity size
-                if (saveQuantity.get(Variant.name) == 0) {
+                if (saveQuantity.get(product.name) == 0) {
                     b.initialQuantityRoot.setVisibility(View.GONE);
                 }
 
-                b.qty.setText(String.valueOf(saveQuantity.get(Variant.name) + ""));
+                b.qty.setText(String.valueOf(saveQuantity.get(product.name) + ""));
             });
 
             b.incBtn.setOnClickListener(v -> {
-                if (saveQuantity.containsKey(Variant.name)) {
-                    saveQuantity.put(Variant.name, saveQuantity.get(Variant.name) + 1);
+                if (saveQuantity.containsKey(product.name)) {
+                    saveQuantity.put(product.name, saveQuantity.get(product.name) + 1);
                 }
                 //check variant quantity size
-                if (saveQuantity.get(Variant.name) != 0) {
+                if (saveQuantity.get(product.name) != 0) {
                     b.initialQuantityRoot.setVisibility(View.VISIBLE);
                 }
 
-                b.qty.setText(String.valueOf(saveQuantity.get(Variant.name) + ""));
+                b.qty.setText(String.valueOf(saveQuantity.get(product.name) + ""));
             });
 
             binding.removeButton.setOnClickListener(new View.OnClickListener() {
@@ -107,7 +107,7 @@ public class VariantsQtyPickerDialog {
                 public void onClick(View v) {
                     if(!saveQuantity.isEmpty()){
                         for (Variant variant : product.variants){
-                            if(saveQuantity.containsKey(Variant.name)){
+                            if(saveQuantity.containsKey(product.name)){
                                 cart.add(product,variant, Integer.parseInt(b.qty.getText().toString()));
                             }
                         }
@@ -123,10 +123,10 @@ public class VariantsQtyPickerDialog {
 
 
     private void preSelectedQty(ItemVariantBinding binding) {
-        if(cart.cartItems.containsKey(product.name + " " + Variant.name)){
-            saveQuantity.put(Variant.name, (int) cart.cartItems.get(product.name + " " + Variant.name).quantity);
+        if(cart.cartItems.containsKey(product.name + " " + product.name)){
+            saveQuantity.put(product.name, (int) cart.cartItems.get(product.name + " " + product.name).quantity);
             binding.initialQuantityRoot.setVisibility(View.VISIBLE);
-            binding.qty.setText(String.valueOf(saveQuantity.get(Variant.name) + ""));
+            binding.qty.setText(String.valueOf(saveQuantity.get(product.name) + ""));
         }
     }
 

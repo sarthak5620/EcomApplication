@@ -23,11 +23,17 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public WBProductBinder wbProductBinder;
     public VBProductBinder vbProductBinder;
     private List<Product> products;
+    private AdapterCallbacksListener listener;
 
-    public ProductAdapter(Context context, Cart cart, List<Product> products) {
+    public ProductAdapter(Context context, Cart cart, List<Product> products,AdapterCallbacksListener listener) {
         this.context = context;
         this.cart = cart;
         this.products = products;
+        this.listener = listener;
+
+        wbProductBinder = new WBProductBinder(context, cart, listener);
+        vbProductBinder = new VBProductBinder(context, cart, listener);
+
     }
 
     @NonNull
@@ -46,14 +52,20 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof WBProductViewHolder){
-            wbProductBinder.Bind(products.get(position), ((WBProductViewHolder)holder).binding,position);
-            return;
+            wbProductBinder.Bind(products.get(position), ((WBProductViewHolder)holder).b,position);
         }
-        vbProductBinder.Bind(products.get(position), ((VBProductViewHolder)holder).binding,position);
-    }
+        else if(holder instanceof VBProductViewHolder){
+            vbProductBinder.onBind(products.get(position) , ((VBProductViewHolder)holder).b,position);
+        }
+        }
 
     @Override
     public int getItemCount() {
         return products.size();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return products.get(position).type;
     }
 }

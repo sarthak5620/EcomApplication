@@ -1,7 +1,7 @@
 package com.example.android.models;
 
 public class Variant {
-     public static String name;
+     public String name;
      public float price;
 
         public Variant(String name, float price) {

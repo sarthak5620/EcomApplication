@@ -1,6 +1,7 @@
 package com.example.android.myecomapplication;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import com.example.android.models.Cart;
@@ -12,17 +13,15 @@ import com.example.android.myecomapplication.databinding.ItemVbProductBinding;
 public class VBProductBinder {
     private Context context;
     private Cart cart;
-    private Product product ;
     private AdapterCallbacksListener listener;
 
-    public VBProductBinder(Context context, Cart cart, Product product, AdapterCallbacksListener listener) {
+    public VBProductBinder(Context context, Cart cart, AdapterCallbacksListener listener) {
         this.context = context;
         this.cart = cart;
-        this.product = product;
         this.listener = listener;
     }
 
-    public void Bind(Product product, ItemVbProductBinding binding, int position){
+    public void onBind(Product product, ItemVbProductBinding binding, int position){
         binding.productName.setText(product.name);
         binding.imageView.setImageResource(Integer.parseInt(String.valueOf(product.imageUrl)));
         binding.numberOfVariants.setText(String.valueOf(product.variants.size() + " variants"));

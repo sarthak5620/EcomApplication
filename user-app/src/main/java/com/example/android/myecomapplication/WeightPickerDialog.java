@@ -28,7 +28,7 @@ public class WeightPickerDialog {
         this.cart = cart;
         this.position = position;
         this.product = product;
-        this.listener = (AdapterCallbacksListener) listener;
+        this.listener = listener;
     }
 
 

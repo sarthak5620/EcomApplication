@@ -14,7 +14,7 @@ public class Cart {
 
         //If selected item is already present in the cart
         if(cartItems.containsKey(product.name)) {
-            total -= cartItems.get(product.name).cost();
+            total += cartItems.get(product.name).cost();
             cartItems.get(product.name).quantity = (int) quantity;
         }
 
