@@ -147,7 +147,6 @@ public class WeightPickerDialog {
                 }
                 dialog.dismiss();
             }
-
         });
     }
 

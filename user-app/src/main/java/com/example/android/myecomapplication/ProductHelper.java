@@ -10,6 +10,7 @@ import java.util.List;
 public class ProductHelper {
     public static List<Product> getProducts(){
         List<Product>products=new ArrayList<>(
+                //List of products as array
                 Arrays.asList(
                         new Product("Kiwi", R.drawable.kiwi, new ArrayList<>(Arrays.asList(
                                 new Variant("500g", 90),

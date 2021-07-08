@@ -3,10 +3,10 @@ package com.example.android.models;
 public class CartItem {
     String name;
     public float unitPrice;
-    public int quantity;
+    public float quantity;
 
     //Details of items in cart
-    public CartItem(String name, float unitPrice,int quantity) {
+    public CartItem(String name, float unitPrice,float quantity) {
         this.name = name;
         this.unitPrice = unitPrice;
         this.quantity = quantity;

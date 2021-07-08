@@ -15,29 +15,36 @@ public class VBProductBinder {
     private Context context;
     private Cart cart;
     private AdapterCallbacksListener listener;
-
+    //constructor of variant based binder
     public VBProductBinder(Context context, Cart cart, AdapterCallbacksListener listener) {
         this.context = context;
         this.cart = cart;
         this.listener = listener;
     }
-
+    /*
+    method to bind data and view together
+     */
     public void onBind(Product product, ItemVbProductBinding binding, int position){
         binding.productName.setText(product.name);
         binding.imageView.setImageResource(Integer.parseInt(String.valueOf(product.imageUrl)));
         binding.numberOfVariants.setText(String.valueOf(product.variants.size() + " variants"));
+        //change visibility of drag and drop button
         binding.dropBtn.setVisibility(View.VISIBLE);
         binding.dropBtn.setRotation(0);
 
 
-        //show and gone variant group
+        //show and hide variant group
         showAndHideVariants(binding, product);
         inflateVariants(product, binding,position);
+        //Handle custom on click listeners of user on buttons
         eventHandlers(binding, product,position);
+        //check if product available in cart
         checkProducts(binding, product);
 
     }
-
+/*
+Button event handlers
+ */
     private void eventHandlers(ItemVbProductBinding binding, Product product, int position) {
         binding.incBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +65,7 @@ public class VBProductBinder {
         binding.decBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Get the number of variants and apply if variants are greater than one
                 if(product.variants.size() > 1){
                     showDialog(product,position);
                 }
@@ -114,7 +122,7 @@ public class VBProductBinder {
         for (Variant variants : product.variants) {
             //check qty present in cart
             if (cart.cartItems.containsKey(product.name + " " + variants.name)) {
-                qty = cart.cartItems.get(product.name + " " + variants.name).quantity;
+                qty = (int) cart.cartItems.get(product.name + " " + variants.name).quantity;
             }
         }
         //update views
@@ -128,6 +136,6 @@ public class VBProductBinder {
     }
 
     private void showDialog(Product product, int position) {
-        new VariantsQtyPickerDialog(context,cart,position,product, (AdapterCallbacksListener) listener).show();
+        new VariantsQtyPickerDialog(context,cart,position,product,listener).show();
     }
 }
