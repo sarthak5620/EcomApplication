@@ -80,10 +80,16 @@ Button event handlers
 
     }
 
-
+/*
+*
+*
+** Inflate variants and get them in recycler view
+ */
 
     private void inflateVariants(Product product, ItemVbProductBinding binding,int position) {
+        //Get the list updated and changed again as it is recycler view
         binding.variantChips.removeAllViews();
+        //Check if number of variants are greater than one
         if (product.variants.size() > 1) {
             binding.productName.setText(product.name);
             for (Variant variant : product.variants) {
@@ -99,7 +105,9 @@ Button event handlers
         binding.numberOfVariants.setText("Rs." + product.variants.get(0).price);
         binding.productName.setText(product.name + " " + product.variants.get(0).name);
     }
-
+/*
+Show amd hide variants on a single click
+ */
     private void showAndHideVariants(ItemVbProductBinding binding, Product product) {
         binding.dropBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,7 +123,9 @@ Button event handlers
             }
         });
     }
-
+/*
+check products in the cart
+ */
     private void checkProducts(ItemVbProductBinding binding, Product product) {
         int qty=0;
 
@@ -134,7 +144,9 @@ Button event handlers
             binding.qty.setText(0 + "");
         }
     }
-
+/*
+show the dialog and open variant qty dialog
+ */
     private void showDialog(Product product, int position) {
         new VariantsQtyPickerDialog(context,cart,position,product,listener).show();
     }

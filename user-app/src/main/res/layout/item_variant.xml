@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/_3"
+        android:text=" "
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/incBtn"
         app:layout_constraintStart_toEndOf="@+id/decBtn"
@@ -64,7 +64,7 @@
         android:id="@+id/initialQuantityRoot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="visible"
+        android:visibility="gone"
         app:constraint_referenced_ids="qty,decBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

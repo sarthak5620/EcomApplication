@@ -29,8 +29,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         adapterCallbackForProducts();
     }
-
+    /*
+    *
+    * Callback of adapter created for product
+     */
     private void adapterCallbackForProducts() {
+        //get the products added by admin
         this.productList = ProductHelper.getProducts();
         AdapterCallbacksListener listener = new AdapterCallbacksListener() {
             @Override
@@ -39,14 +43,18 @@ public class MainActivity extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
             }
         };
+        //object of cart to initialise cart
         cart = new Cart();
         adapter = new ProductAdapter(this,cart,productList,listener);
         binding.list.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         binding.list.setAdapter(adapter);
         binding.list.setLayoutManager(new LinearLayoutManager(this));
     }
-
+    /*
+    Update cart summary every single time it is called
+     */
     private void updateCartSummary() {
+        //check if cart is empty
         if(!cart.cartItems.isEmpty()){
             binding.noOfItems.setText(cart.noOfItems+"items");
             binding.total.setText("₹"+String.format("%.2f",cart.total));
