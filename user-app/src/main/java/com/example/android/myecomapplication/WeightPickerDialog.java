@@ -19,7 +19,6 @@ public class WeightPickerDialog {
     private int position;
     private int minValueInKg;
     private int minValueInG;
-    private int selectedPosition=0;
     private DialogWeightPickerBinding binding;
     private AdapterCallbacksListener listener;
 
@@ -79,7 +78,7 @@ public class WeightPickerDialog {
         binding.gPicker.setMinValue(0);
         binding.gPicker.setMaxValue(numberOfValues-1);
         binding.gPicker.setDisplayedValues(ValueToDisplay);
-        binding.gPicker.setValue(selectedPosition);
+        binding.gPicker.setValue(position);
     }
 
     private void eventNumberPickerKg() {
@@ -104,16 +103,16 @@ public class WeightPickerDialog {
                     if(minValueInG ==0){
                         return;
                     }
-                    selectedPosition=((minValueInG /50+binding.gPicker.getValue())*50)/50;
+                    position=((minValueInG /50+binding.gPicker.getValue())*50)/50;
                     minValueInG =0;
                     eventNumberPickerG();
                 }
                 else if(picker.getValue()+ minValueInKg == minValueInKg){
                     minValueInG =(int)((product.minimumQuantity- minValueInKg)*1000);
 
-                    selectedPosition=((binding.gPicker.getValue()*50)- minValueInG)/50;
-                    if(selectedPosition<0){
-                        selectedPosition=0;
+                    position=((binding.gPicker.getValue()*50)- minValueInG)/50;
+                    if(position<0){
+                        position=0;
                     }
                     eventNumberPickerG();
                 }
