@@ -67,11 +67,11 @@
                 style="@style/TextAppearance.AppCompat.Body1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:text="@string/number_of_variants"
                 app:layout_constraintBottom_toBottomOf="@+id/dropBtn"
-                app:layout_constraintLeft_toRightOf="@id/imageView"
-                android:layout_marginStart="16dp" />
+                app:layout_constraintLeft_toRightOf="@id/imageView" />
 
             <ImageButton
                 android:id="@+id/dropBtn"
@@ -91,8 +91,8 @@
                 style="@style/TextAppearance.AppCompat.Body1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="2dp"
-                android:layout_marginRight="2dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="12dp"
                 android:gravity="center"
                 android:text="@string/variant_items"
                 app:layout_constraintBottom_toBottomOf="@+id/incBtn"
@@ -105,24 +105,22 @@
                 android:layout_height="18dp"
                 android:layout_marginRight="24dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                app:srcCompat="@drawable/ic_add"
-                app:tint="@color/design_default_color_primary"
-                tools:ignore="VectorDrawableCompat"
-                android:layout_marginEnd="24dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_add"
+                app:tint="@color/design_default_color_primary"
+                tools:ignore="VectorDrawableCompat" />
 
             <ImageButton
                 android:id="@+id/decBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="2dp"
-                android:layout_marginRight="2dp"
+                android:layout_marginEnd="11dp"
+                android:layout_marginRight="11dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 app:layout_constraintBottom_toBottomOf="@+id/qty"
                 app:layout_constraintEnd_toStartOf="@+id/qty"
-                app:layout_constraintRight_toLeftOf="@id/qty"
                 app:layout_constraintTop_toTopOf="@+id/qty"
                 app:srcCompat="@drawable/ic_remove"
                 app:tint="@color/design_default_color_primary"
@@ -138,7 +136,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/barrier2"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imageView" >
+                app:layout_constraintTop_toBottomOf="@id/imageView">
 
 
             </com.google.android.material.chip.ChipGroup>
