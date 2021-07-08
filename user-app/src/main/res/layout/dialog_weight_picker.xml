@@ -22,22 +22,27 @@
 
     <NumberPicker
         android:id="@+id/Kg_picker"
-        android:layout_width="195dp"
+        android:layout_width="175dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
         android:layout_marginTop="16dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/g_picker"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameOfProduct" />
+        app:layout_constraintTop_toBottomOf="@+id/nameOfProduct"
+        android:layout_marginStart="8dp" />
 
     <NumberPicker
         android:id="@+id/g_picker"
-        android:layout_width="195dp"
+        android:layout_width="175dp"
+        android:layout_marginRight="8dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        app:layout_constraintLeft_toRightOf="@+id/removeButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/Kg_picker"
         app:layout_constraintTop_toBottomOf="@+id/nameOfProduct"
-        app:layout_constraintTop_toTopOf="@+id/Kg_picker" />
+        app:layout_constraintTop_toTopOf="@+id/Kg_picker"
+        android:layout_marginEnd="8dp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/removeButton"

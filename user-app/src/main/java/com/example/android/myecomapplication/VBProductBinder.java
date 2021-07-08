@@ -7,6 +7,7 @@ import android.view.View;
 import com.example.android.models.Cart;
 import com.example.android.models.Product;
 import com.example.android.models.Variant;
+import com.example.android.myecomapplication.databinding.ChipVariantBinding;
 import com.example.android.myecomapplication.databinding.ItemVariantBinding;
 import com.example.android.myecomapplication.databinding.ItemVbProductBinding;
 
@@ -27,7 +28,6 @@ public class VBProductBinder {
         binding.numberOfVariants.setText(String.valueOf(product.variants.size() + " variants"));
         binding.dropBtn.setVisibility(View.VISIBLE);
         binding.dropBtn.setRotation(0);
-        binding.numberOfVariants.setVisibility(View.GONE);
 
 
         //show and gone variant group
@@ -55,7 +55,7 @@ public class VBProductBinder {
             }
         });
 
-        binding.decButton.setOnClickListener(new View.OnClickListener() {
+        binding.decBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(product.variants.size() > 1){
@@ -75,20 +75,21 @@ public class VBProductBinder {
 
 
     private void inflateVariants(Product product, ItemVbProductBinding binding,int position) {
-        for (Variant variants : product.variants ){
-            ItemVariantBinding b  = ItemVariantBinding.inflate(((MainActivity)context).getLayoutInflater());
-            b.chipVariantsName.setText(String.valueOf("₹" + variants.price + "-" +variants.name));
-            binding.variantChips.addView(binding.getRoot());
-        }
-        if(product.variants.size() >0){
-           showDialog(product,position);
-        }
-        else{
-            binding.dropBtn.setVisibility(View.GONE);
-            binding.numberOfVariants.setText("₹" + product.variants.get(0).price);
-            binding.productName.setText(product.name + " " + product.variants.get(0).name);
+        binding.variantChips.removeAllViews();
+        if (product.variants.size() > 1) {
+            binding.productName.setText(product.name);
+            for (Variant variant : product.variants) {
+                ChipVariantBinding b = ChipVariantBinding.inflate(((MainActivity) context).getLayoutInflater());
+                b.chipVariantsName.setText(String.valueOf("₹" + variant.price + "-" +variant.name));
+                binding.variantChips.addView(b.getRoot());
+            }
+            return;
         }
 
+        //for single variant
+        binding.dropBtn.setVisibility(View.GONE);
+        binding.numberOfVariants.setText("Rs." + product.variants.get(0).price);
+        binding.productName.setText(product.name + " " + product.variants.get(0).name);
     }
 
     private void showAndHideVariants(ItemVbProductBinding binding, Product product) {

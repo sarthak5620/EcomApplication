@@ -24,94 +24,111 @@ public class VariantsQtyPickerDialog {
     private Cart cart;
     private AlertDialog dialog;
     private Product product;
-    private final int selectedPosition;
-    private LayoutInflater inflater;
+    private int position;
     private AdapterCallbacksListener listener ;
     private HashMap<String, Integer> saveQuantity = new HashMap<>();
-    private DialogVariantsQtyPickerBinding binding;
-    private ItemVariantBinding b;
+    private DialogVariantsQtyPickerBinding b;
 
 
     public VariantsQtyPickerDialog(Context context, Cart cart, int position, Product product, AdapterCallbacksListener listener) {
         this.cart = cart;
-        this.selectedPosition = position ;
+        this.position = position ;
         this.product = product;
         this.listener = listener;
         this.context = context;
     }
 
     public void show() {
-        binding= DialogVariantsQtyPickerBinding.inflate(((MainActivity)context).getLayoutInflater());
+        b= DialogVariantsQtyPickerBinding.inflate(((MainActivity)context).getLayoutInflater());
 
         dialog=new MaterialAlertDialogBuilder(context, R.style.CustomDialogTheme)
                 .setCancelable(false)
-                .setView(binding.getRoot())
+                .setView(b.getRoot())
                 .show();
 
-        binding.nameOfProduct.setText(product.name);
+        b.nameOfProduct.setText(product.name);
 
         inflateVariants();
         buttonEventHandlers();
-        preSelectedQty(b);
+       // preSelectedQty();
 
     }
 
     private void inflateVariants() {
        for (Variant variants : product.variants ){
-           b = ItemVariantBinding.inflate(inflater);
-           b.chipVariantsName.setText(String.valueOf("₹" + variants.price + "-" + variants.name));
-           binding.variantList.addView(binding.getRoot());
-       }
+           ItemVariantBinding binding = ItemVariantBinding.inflate(((MainActivity) context).getLayoutInflater());
+           binding.chipVariantsName.setText("Rs." + variants.price + " - " + variants.name);
+           b.variantList.addView(binding.getRoot());
+           preSelectedQty(binding, variants.name);
 
+           //add quantity
+           addQuantity(binding, variants.name);
+
+           //dec quantity
+           decQuantity(binding, variants.name);
+       }
+    }
+
+    private void decQuantity(ItemVariantBinding binding, String name) {
+        binding.decBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Save qty of variants
+                //check variant present or not
+                if (saveQuantity.containsKey(name)) {
+                    saveQuantity.put(name, saveQuantity.get(name) + 1);
+
+                }
+                if(saveQuantity.get(name) == 0){
+                    binding.initialQuantityRoot.setVisibility(View.GONE);
+                }
+                //update views
+                binding.qty.setText(saveQuantity.get(name) + "");
+
+            }
+        });
+    }
+
+    private void addQuantity(ItemVariantBinding binding, String name) {
+        binding.incBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Save qty of variants
+                //check variant present or not
+                if (saveQuantity.containsKey(name)) {
+                    saveQuantity.put(name, saveQuantity.get(name) + 1);
+
+                } else {
+                    saveQuantity.put(name, 1);
+                }
+                //update views
+                binding.qty.setText(saveQuantity.get(name) + "");
+                binding.initialQuantityRoot.setVisibility(View.VISIBLE);
+            }
+        });
     }
 
 
     private void buttonEventHandlers() {
-            b.decBtn.setOnClickListener(v -> {
-                if (saveQuantity.containsKey(product.name)) {
-                    saveQuantity.put(product.name, saveQuantity.get(product.name) - 1);
+            b.removeButton.setOnClickListener(v -> {
+                if (!saveQuantity.isEmpty()) {
+                    cart.removeAllVBP(product);
+                    //update views
+                    listener.onCartUpdated(position);
                 }
-                //check variant quantity size
-                if (saveQuantity.get(product.name) == 0) {
-                    b.initialQuantityRoot.setVisibility(View.GONE);
-                }
-
-                b.qty.setText(String.valueOf(saveQuantity.get(product.name) + ""));
+                dialog.dismiss();
             });
 
-            b.incBtn.setOnClickListener(v -> {
-                if (saveQuantity.containsKey(product.name)) {
-                    saveQuantity.put(product.name, saveQuantity.get(product.name) + 1);
-                }
-                //check variant quantity size
-                if (saveQuantity.get(product.name) != 0) {
-                    b.initialQuantityRoot.setVisibility(View.VISIBLE);
-                }
-
-                b.qty.setText(String.valueOf(saveQuantity.get(product.name) + ""));
-            });
-
-            binding.removeButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(!saveQuantity.isEmpty()){
-                        cart.removeAllVBP(product);
-                        listener.onCartUpdated(selectedPosition);
-                    }
-                    dialog.dismiss();
-                }
-            });
-
-            binding.SaveButton.setOnClickListener(new View.OnClickListener() {
+            b.SaveButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if(!saveQuantity.isEmpty()){
                         for (Variant variant : product.variants){
-                            if(saveQuantity.containsKey(product.name)){
-                                cart.add(product,variant, Integer.parseInt(b.qty.getText().toString()));
+                            if(saveQuantity.containsKey(variant.name)){
+                                cart.add(product,variant,saveQuantity.get(variant.name));
                             }
                         }
-                        listener.onCartUpdated(selectedPosition);
+                        listener.onCartUpdated(position);
                     }
                     else{
                         Toast.makeText(context,"Please add something!",Toast.LENGTH_SHORT).show();
@@ -122,11 +139,11 @@ public class VariantsQtyPickerDialog {
     }
 
 
-    private void preSelectedQty(ItemVariantBinding binding) {
-        if(cart.cartItems.containsKey(product.name + " " + product.name)){
-            saveQuantity.put(product.name, (int) cart.cartItems.get(product.name + " " + product.name).quantity);
+    private void preSelectedQty(ItemVariantBinding binding, String name) {
+        if(cart.cartItems.containsKey(product.name + " " + name)){
+            saveQuantity.put(product.name, cart.cartItems.get(product.name + " " + name).quantity);
             binding.initialQuantityRoot.setVisibility(View.VISIBLE);
-            binding.qty.setText(String.valueOf(saveQuantity.get(product.name) + ""));
+            binding.qty.setText(String.valueOf(saveQuantity.get(name) + ""));
         }
     }
 

@@ -7,6 +7,8 @@ import com.example.android.models.Cart;
 import com.example.android.models.Product;
 import com.example.android.myecomapplication.databinding.ItemWbProductBinding;
 
+import java.util.Objects;
+
 
 public class WBProductBinder {
     private Context context;
@@ -29,6 +31,7 @@ public class WBProductBinder {
         binding.productName.setText(product.name);
         binding.imageView.setImageResource(Integer.parseInt(String.valueOf(product.imageUrl)));
         binding.priceOfProduct.setText(String.valueOf("₹" + product.pricePerKg + "/kg"));
+
         //button click event handlers
         eventHandlers(binding, product, position);
         checkProducts(binding, product);
@@ -41,7 +44,7 @@ public class WBProductBinder {
         if (cart.cartItems.containsKey(product.name)) {
             binding.nonZeroQuantityGroup.setVisibility(View.VISIBLE);
             binding.incBtn.setVisibility(View.GONE);
-            binding.qty.setText(String.valueOf(cart.cartItems.get(product.name).quantity + "Kg"));
+            binding.qty.setText(String.valueOf(Objects.requireNonNull(cart.cartItems.get(product.name)).quantity + "Kg"));
         } else {
             binding.nonZeroQuantityGroup.setVisibility(View.GONE);
             binding.incBtn.setVisibility(View.VISIBLE);
@@ -60,7 +63,7 @@ public class WBProductBinder {
             }
         });
 
-        b.decButton.setOnClickListener(new View.OnClickListener() {
+        b.editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //show the weight picker dialog

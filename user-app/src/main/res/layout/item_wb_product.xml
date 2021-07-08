@@ -81,7 +81,7 @@
                 android:layout_marginRight="8dp"
                 android:text="@string/_1_5kg"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/decButton"
+                app:layout_constraintRight_toLeftOf="@id/editButton"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginEnd="8dp" />
 
@@ -91,16 +91,16 @@
                 android:layout_height="18dp"
                 android:layout_marginRight="24dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_add"
                 app:tint="@color/design_default_color_primary"
                 tools:ignore="VectorDrawableCompat"
-                android:layout_marginEnd="24dp" />
+                android:layout_marginEnd="24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
-                android:id="@+id/decButton"
+                android:id="@+id/editButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="24dp"
@@ -118,7 +118,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="gone"
-                app:constraint_referenced_ids="decButton,qty" />
+                app:constraint_referenced_ids="editButton,qty" />
 
             <androidx.constraintlayout.widget.Barrier
                 android:id="@+id/barrier"
