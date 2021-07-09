@@ -4,8 +4,8 @@ This is an E-Commerce application for the grocery items.
 
 # Preview of the application:
 
-<img width="231" alt="" src="https://user-images.githubusercontent.com/66621092/123473067-affa3600-d615-11eb-935a-431db9bc768b.PNG">
-<img width="231" alt="" src="https://user-images.githubusercontent.com/66621092/123473070-b12b6300-d615-11eb-8fbe-d9a0b78e3c08.PNG">
-<img width="231" alt="" src="https://user-images.githubusercontent.com/66621092/123473074-b2f52680-d615-11eb-89a6-6e56cf9b134c.PNG">
-<img width="231" alt="" src="https://user-images.githubusercontent.com/66621092/123473086-b7214400-d615-11eb-83e6-c28bf72f72a7.PNG">
-<img width="231" alt="" src="https://user-images.githubusercontent.com/66621092/123473119-c2746f80-d615-11eb-98f9-3630fd150cb5.PNG">
+<img width="231" alt="" src="https://user-images.githubusercontent.com/66621092/125088374-fa39e780-e0ea-11eb-93a0-0f0a8beb0fda.jpeg">
+<img width="231" alt="" src="https://user-images.githubusercontent.com/66621092/125088381-fc03ab00-e0ea-11eb-8722-911d182d7283.jpeg">
+<img width="231" alt="" src="https://user-images.githubusercontent.com/66621092/125088383-fd34d800-e0ea-11eb-8ae8-944b035e555f.jpeg">
+<img width="231" alt="" src="https://user-images.githubusercontent.com/66621092/125088407-00c85f00-e0eb-11eb-9b6a-d12f389d4d87.jpeg">
+<img width="231" alt="" src="https://user-images.githubusercontent.com/66621092/125088372-f908ba80-e0ea-11eb-9a14-9f9b8981b77f.jpeg">
