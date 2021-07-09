@@ -22,7 +22,7 @@
 
     <ImageButton
         android:id="@+id/incBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
@@ -37,7 +37,7 @@
     <TextView
         android:id="@+id/qty"
         style="@style/TextAppearance.AppCompat.Body1"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text=" "
@@ -48,7 +48,7 @@
 
     <ImageButton
         android:id="@+id/decBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="36dp"
@@ -64,7 +64,7 @@
         android:id="@+id/initialQuantityRoot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
+        android:visibility="visible"
         app:constraint_referenced_ids="qty,decBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
