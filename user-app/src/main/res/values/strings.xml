@@ -16,5 +16,18 @@
     <string name="name_of_products">Kiwi</string>
     <string name="_3">3</string>
     <string name="remove_all">REMOVE ALL</string>
+    <string name="cart_summary_">CART SUMMARY</string>
+    <string name="orange">orange</string>
+    <string name="weight">2.5kg x 80/kg</string>
+    <string name="price">Rs 200</string>
+    <string name="total">TOTAL</string>
+    <string name="ites">6 items</string>
+    <string name="rs_932">Rs.932</string>
+    <string name="delivery_info">DELIVERY INFO</string>
+    <string name="name">Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="address">Address :</string>
+    <string name="address_setter">Not Set</string>
+    <string name="place_order">PLACE ORDER</string>
 
 </resources>

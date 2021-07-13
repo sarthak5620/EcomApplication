@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.gson.Gson;
 import com.example.android.models.Cart;
 import com.example.android.models.Product;
 import com.example.android.models.Variant;
@@ -20,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
    ActivityMainBinding binding;
    Cart cart;
    List<Product> productList=new ArrayList<>();
-
+    private boolean isUpdated;
     ProductAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(binding.getRoot());
         adapterCallbackForProducts();
+        cartActivityOpen();
+        loadCartFromSharePreferences();
     }
     /*
     *
@@ -63,6 +67,34 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             binding.cartSummary.setVisibility(View.GONE);
+        }
+    }
+
+    private void cartActivityOpen(){
+        binding.checkoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,CartActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void loadCartFromSharePreferences() {
+        String cart = getPreferences(MODE_PRIVATE).getString("CART", null);
+        this.cart= new Gson().fromJson(cart,Cart.class);
+
+        updateCartSummary();
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        if (isUpdated) {
+            Gson gson = new Gson();
+            String json = gson.toJson(cart);
+            getPreferences(MODE_PRIVATE).edit().putString("CART", json).apply();
+            isUpdated=false;
         }
     }
 }
