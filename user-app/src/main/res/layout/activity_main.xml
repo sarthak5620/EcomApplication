@@ -48,7 +48,7 @@
             style="@style/TextAppearance.MaterialComponents.Subtitle2"/>
 
         <TextView
-            android:id="@+id/cart_value"
+            android:id="@+id/checkoutBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/checkout"

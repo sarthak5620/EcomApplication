@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.android.models.Cart;
@@ -28,9 +31,35 @@ public class CartActivity extends AppCompatActivity {
         Intent intent=getIntent();
         cart=(Cart)intent.getSerializableExtra(Constants.KEY);
         showCart();
+        setupHideErrorForEditText();
+        placeOrderButton();
         displayCartList();
     }
-/*
+    private void setupHideErrorForEditText() {
+        TextWatcher myTextWatcher =  new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                hideError();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        };
+        binding.ContactNo.getEditText().addTextChangedListener(myTextWatcher);
+    }
+
+    private void hideError() {
+        binding.ContactNo.setError(null);
+    }
+
+    /*
 *
 * Display cart items in linear layout consisting of material card view
  */
@@ -66,6 +95,26 @@ public class CartActivity extends AppCompatActivity {
             binding.noOfItems.setText(String.valueOf(cart.noOfItems + "Items"));
             binding.cartValue.setText(String.valueOf("₹" + cart.total));
         }
+    }
+
+    public void placeOrderButton(){
+        binding.OrderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String input = binding.ContactNo.getEditText().getText().toString().trim();
+                if (input.isEmpty()) {
+                    binding.ContactNo.setError("Please Enter Something!");
+                    return;
+                }
+                else if(!input.matches("^\\d{10}$")){
+                    binding.ContactNo.setError("Please enter valid number ");
+                    return;
+                }
+                else{
+                    Toast.makeText(context,"yeah order placed",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
 
