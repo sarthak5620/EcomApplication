@@ -14,12 +14,12 @@ public class Cart {
         //If selected item is already present in the cart
         if(cartItems.containsKey(product.name)) {
             total += cartItems.get(product.name).cost();
-            cartItems.get(product.name).quantity = (int) quantity;
+            cartItems.get(product.name).quantity = quantity;
         }
 
         //Else if adding it for the first time
         else {
-            CartItem item = new CartItem(product.name, product.pricePerKg, (int) quantity);
+            CartItem item = new CartItem(product.name, product.pricePerKg, quantity);
             cartItems.put(product.name, item);
             noOfItems++;
         }

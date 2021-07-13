@@ -78,7 +78,7 @@ Method to decrease the quantity of variants
                 //Save qty of variants
                 //check variant present or not
                 if (saveQuantity.containsKey(name)) {
-                    saveQuantity.put(name, saveQuantity.get(name) + 1);
+                    saveQuantity.put(name, saveQuantity.get(name) - 1);
 
                 }
                 //Check if the quantity is equal to 0

@@ -30,19 +30,21 @@ public class CartActivity extends AppCompatActivity {
         showCart();
         displayCartList();
     }
-
+/*
+*
+* Display cart items in linear layout consisting of material card view
+ */
     private void displayCartList() {
         for(HashMap.Entry<String, CartItem>map : cart.cartItems.entrySet()){
+            //Inflate cart items and add them dynamically
             CartItemBinding b= CartItemBinding.inflate(getLayoutInflater());
-
+            //Set product name
             b.productName.setText(""+map.getKey());
-
+            //Set total amount in card view
             b.productPrice.setText("₹"+map.getValue().cost());
-
-
             b.productWeight.setText((int) (map.getValue().quantity) + " x ₹" + (map.getValue().cost()) / ((int) (map.getValue().quantity)) + "/kg");
+            //Set view and add the card view to linear layout
             binding.CartList.addView(b.getRoot());
-
         }
     }
 
