@@ -12,7 +12,7 @@ public class CartItem {
         this.quantity = quantity;
     }
     //Total cost of the items
-    float cost() {
+    public float cost() {
         return unitPrice*quantity;
     }
 

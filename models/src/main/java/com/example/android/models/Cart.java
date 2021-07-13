@@ -7,8 +7,7 @@ public class Cart {
    public HashMap<String, CartItem> cartItems = new HashMap<>();
     public float total;
     public int noOfItems;
-    private int quantity;
-
+    public float quantity;
     //Method to add Weight Based Products
     public void add(Product product, float quantity) {
 
@@ -30,7 +29,7 @@ public class Cart {
     }
 
     //Method to add Variant Based Products
-    public void add(Product product, Variant variant, int quantity) {
+    public void add(Product product, Variant variant, float quantity) {
         this.quantity = quantity;
 
         String key = product.name + " " + variant.name;
