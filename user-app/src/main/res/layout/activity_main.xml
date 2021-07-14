@@ -10,22 +10,30 @@
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/cart_summary"
+        app:layout_constraintBottom_toTopOf="@+id/cartSummary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cart_summary"
+    <FrameLayout
+        android:id="@+id/cartSummary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/design_default_color_primary"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:visibility="gone"
+        android:focusable="true"
+        android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@color/design_default_color_primary"
-        android:padding="16dp">
+        app:layout_constraintStart_toStartOf="parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+       android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/total"
@@ -61,5 +69,6 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

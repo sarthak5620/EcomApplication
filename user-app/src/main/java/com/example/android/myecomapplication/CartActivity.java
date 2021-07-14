@@ -81,12 +81,9 @@ public class CartActivity extends AppCompatActivity {
     Check number of items in cart
      */
     private void showCart() {
-        //If cart is empty
-        if(cart.noOfItems == 0){
-            Toast.makeText(context,"Nothing to show here!",Toast.LENGTH_SHORT).show();
-        }
+
         //If cart contains exactly one item
-        else if(cart.noOfItems == 1){
+        if(cart.noOfItems == 1){
             binding.noOfItems.setText(String.valueOf(cart.noOfItems + "Item"));
             binding.cartValue.setText(String.valueOf("₹" + cart.total));
         }

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 
 import com.google.gson.Gson;
@@ -14,6 +15,7 @@ import com.example.android.models.Product;
 import com.example.android.models.Variant;
 import com.example.android.myecomapplication.databinding.ActivityMainBinding;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCartUpdated(int position) {
                 updateCartSummary();
+                isUpdated = true;
                 adapter.notifyDataSetChanged();
             }
         };
@@ -75,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,CartActivity.class);
+                intent.putExtra(Constants.KEY, (Serializable) cart);
                 startActivity(intent);
             }
         });
@@ -82,6 +86,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadCartFromSharePreferences() {
         String cart = getPreferences(MODE_PRIVATE).getString("CART", null);
+
+        if(cart==null){
+            this.cart=new Cart();
+            return;
+        }
         this.cart= new Gson().fromJson(cart,Cart.class);
 
         updateCartSummary();
